@@ -46,3 +46,18 @@ Lets take a look inside the `src` folder
  ```
  npm run dev
  ```
+
+
+ Docker setup:
+ ```
+ docker build -t api-gateway .
+ ```
+ ```
+ docker network create micro-net
+ ```
+ ```
+ docker volume create api-gateway-node-modules  
+ ```
+ ```
+ docker run -it --init -p 3001:3001 --name=api_gateway --network micro-net -v "$(pwd)":/developer/nodejs/api-gateway -v api-gateway-node-modules:/developer/nodejs/api-gateway/node_modules api-gateway:latest 
+ ```
